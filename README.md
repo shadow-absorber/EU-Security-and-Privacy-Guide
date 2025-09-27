@@ -37,8 +37,13 @@ A checklist of things you can do to improve your devices security and your priva
 
 # Credits and recommended reading:
 [https://madaidans-insecurities.github.io/index.html](https://madaidans-insecurities.github.io/index.html/)
+
 [kuketz blog](https://www.kuketz-blog.de/) on privacy and security steps in german
+
 [justdeleteme](https://justdeleteme.xyz/), a site telling you how to delete your old accounts
+
 [justgetmydata](https://justgetmydata.com), a site telling you how to get all the data a site has on you!
+
 [justwhatsthedata](https://justwhatsthedata.github.io), a site telling you what data sites collect on you!
+
 [tosdr/Terms of service Did'nt Read](https://tosdr.org/en), a site that breaks down terms of service to make it easily understandable
