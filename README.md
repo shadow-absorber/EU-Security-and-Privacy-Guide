@@ -16,6 +16,7 @@ A checklist of things you can do to improve your devices security and your priva
 - [ ] faraday bag for phone and laptop
 - [ ] google pixel with [grapheneos](https://grapheneos.org/)
 - [ ] alternative degoogled android phones: [Comparison of Android-based Operating Systems](https://eylenburg.github.io/android_comparison.htm/)
+- [ ] use [icogni](https://incogni.com/) for databroker removal as it is the main option that works in the EU
 
 - [ ] full disk encryption
 - [ ] opensnitch
@@ -28,6 +29,16 @@ A checklist of things you can do to improve your devices security and your priva
 
 - [ ] voicemail pin
 
+## Security
+- [ ] install linux
+- [ ] enable secure boot
+- [ ] set sysctl kernel hardening values
+- [ ] enable a firewall
 
 # Credits and recommended reading:
 [https://madaidans-insecurities.github.io/index.html](https://madaidans-insecurities.github.io/index.html/)
+[kuketz blog](https://www.kuketz-blog.de/) on privacy and security steps in german
+[justdeleteme](https://justdeleteme.xyz/), a site telling you how to delete your old accounts
+[justgetmydata](https://justgetmydata.com), a site telling you how to get all the data a site has on you!
+[justwhatsthedata](https://justwhatsthedata.github.io), a site telling you what data sites collect on you!
+[tosdr/Terms of service Did'nt Read](https://tosdr.org/en), a site that breaks down terms of service to make it easily understandable
