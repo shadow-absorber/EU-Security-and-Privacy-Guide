@@ -6,6 +6,8 @@ A checklist of things you can do to improve your devices security and your priva
 - [ ] change browser to firefox( or forks like librewolf ) or if you need chromium! brave or thorium .
 - [ ] use a password manager. recommended for most is [bitwarden](https://bitwarden.com/) for online password manager, and [keepassxc](https://keepassxc.org/) for offline password manager.
 - [ ] setup authenticator app for 2fa on all sites that support it.
+- [ ] use [visiblelabs](https://remover.visiblelabs.org/) data broker removal tool as it is free and gets you removed from a lot of databrokers including ones based in the eu
+- [ ] opt out of data brokers using the [delete-links.md](delete-links.md) to opt out of a few not covered by the previous tool
 
 ## Payment required things
 - [ ] get a hardware key for 2fa, recommend yubikey and nitrokey
