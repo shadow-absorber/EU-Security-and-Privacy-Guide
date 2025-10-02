@@ -49,3 +49,5 @@ A checklist of things you can do to improve your devices security and your priva
 [justwhatsthedata](https://justwhatsthedata.github.io), a site telling you what data sites collect on you!
 
 [tosdr/Terms of service Did'nt Read](https://tosdr.org/en), a site that breaks down terms of service to make it easily understandable
+
+[privacy visualizer](https://rejectconvenience.com/privacy-visualizer/), a visualiser for help understanding privacy policies you read, made by [reject convience](https://www.youtube.com/@rejectconvenience)  on youtube
