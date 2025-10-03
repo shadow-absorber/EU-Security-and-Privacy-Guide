@@ -2,7 +2,7 @@
 
 if [ "$EUID" -ne 0 ]
 then
-    echo "MUST RUN AS ROOT AND NOT IN SUDO"
+    echo "MUST RUN AS ROOT"
     exit
 fi
 
