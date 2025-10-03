@@ -73,7 +73,6 @@ fi
 read -r -p "apply network kernel hardening? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
 then
-    do_something
     echo "networking hardening!"
     echo "# protect against syn flood attacks"
     echo "net.ipv4.tcp_syncookies=1" > /etc/sysctl.d/20-network-hardening.conf
@@ -116,12 +115,30 @@ fi
 
 echo "##### EN SYSCTL SECTION #####"
 
+read -r -p "change machine id? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
+then
+    echo "change machine id number to whonix id number"
+    echo "b08dfa6083e7567a1921a715000001fb" > /etc/machine-id
+else
+    echo "skipping machine id change"
+fi
 
-#echo "change machine id number to whonix id number"
-#echo "b08dfa6083e7567a1921a715000001fb" > /etc/machine-id
+read -r -p "change hostname to generic one? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
+then
+    echo "change hostname of computer to generic one"
+    hostnamectl hostname arch
+else
+    echo "skipping hostname change"
+fi
 
-#echo "change hostname of computer to generic one"
-#hostnamectl hostname arch
+read -r -p "change timezone to UTC? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
+then
+    echo "setting timezone to UTC"
+    timedatectl set-timezone UTC
+else
+    echo "skipping changing timezone"
+fi
 
-#echo "setting timezone to UTC"
-#timedatectl set-timezone UTC
