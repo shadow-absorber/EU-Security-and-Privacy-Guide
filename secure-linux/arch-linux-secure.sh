@@ -11,28 +11,44 @@ echo "####### START NETWORKMANAGER SECTION #####"
 read -r -p "apply networkmanager config? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
 then  
+    # sets networkmanager conf dir
+    NetworkManagerConf="/etc/NetworkManager/conf.d/"
+    
     echo "enable privacy extensions for ipv6 in networkmanager"
-    echo "[connection]" > /etc/NetworkManager/conf.d/10-ip6-privacy.conf
-    echo "ipv6.ip6-privacy=2" >> /etc/NetworkManager/conf.d/10-ip6-privacy.conf
+    cat >> "$NetworkManagerConf/10-ip6-privacy.conf" << 'EOF'
+    # enable privacy extension for ipv6
+    [connection]
+    ipv6.ip6-privacy=2
+    EOF
 
     echo "disable connectivity check in networkmanager"
-    echo "[connectivity]" > /etc/NetworkManager/conf.d/11-connectivity-check-disable.conf
-    echo "enabled=false"  >> /etc/NetworkManager/conf.d/11-connectivity-check-disable.conf
+    cat >> "$NetworkManagerConf/11-connectivity-check-disable.conf" << 'EOF'
+    # disable connectivity check
+    [connectivity]
+    enabled=false
+    EOF
 
     echo "disable sending hostname in networkmanager"
-    echo "[connection]" > /etc/NetworkManager/conf.d/12-dhcp-send-hostname-disable.conf
-    echo "ipv4.dhcp-send-hostname=0" >> /etc/NetworkManager/conf.d/12-dhcp-send-hostname-disable.conf
-    echo "ipv6.dhcp-send-hostname=0" >> /etc/NetworkManager/conf.d/12-dhcp-send-hostname-disable.conf
+    cat >> "$NetworkManagerConf/12-dhcp-send-hostname-disable.conf" << 'EOF'
+    # disable sending hostname
+    [connection]
+    ipv4.dhcp-send-hostname=0
+    ipv6.dhcp-send-hostname=0
+    EOF
 
     echo "enable mac address randomization for scanning and connecting using networkmanager"
-    echo "[device-mac-randomization]" > /etc/NetworkManager/conf.d/13-wifi-rand-mac.conf
-    echo "# yes is already the default for scanning"
-    echo "wifi.scan-rand-mac-address=yes" >> /etc/NetworkManager/conf.d/13-wifi-rand-mac.conf
-    echo "[connection-mac-randomization]" >> /etc/NetworkManager/conf.d/13-wifi-rand-mac.conf
-    echo "# Randomize MAC for every ethernet connection"
-    echo "ethernet.cloned-mac-address=random" >> /etc/NetworkManager/conf.d/13-wifi-rand-mac.conf
-    echo "# Generate a random MAC for each Wi-Fi and associate the two permanently." 
-    echo "wifi.cloned-mac-address=stable" >> /etc/NetworkManager/conf.d/13-wifi-rand-mac.conf
+    cat >> "$NetworkManagerConf/13-wifi-rand-mac.conf" << 'EOF'
+    # enable mac address randomization
+    #
+    # yes is already the default for scanning
+    [device-mac-randomization]
+    wifi.scan-rand-mac-address=yes
+    [connection-mac-randomization]
+    # Randomize MAC for every ethernet connection
+    ethernet.cloned-mac-address=random
+    # Generate a random MAC for each Wi-Fi and associate the two permanently.
+    wifi.cloned-mac-address=stable
+    EOF
 else
     echo "skipping networkmanager config"
 fi
