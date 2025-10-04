@@ -18,14 +18,14 @@ then
     # enable privacy extension for ipv6
     [connection]
     ipv6.ip6-privacy=2
-    EOF
+EOF
 
     echo "disable connectivity check in networkmanager"
     cat >> "$NetworkManagerConf/11-connectivity-check-disable.conf" << 'EOF'
     # disable connectivity check
     [connectivity]
     enabled=false
-    EOF
+EOF
 
     echo "disable sending hostname in networkmanager"
     cat >> "$NetworkManagerConf/12-dhcp-send-hostname-disable.conf" << 'EOF'
@@ -33,7 +33,7 @@ then
     [connection]
     ipv4.dhcp-send-hostname=0
     ipv6.dhcp-send-hostname=0
-    EOF
+EOF
 
     echo "enable mac address randomization for scanning and connecting using networkmanager"
     cat >> "$NetworkManagerConf/13-wifi-rand-mac.conf" << 'EOF'
@@ -49,12 +49,13 @@ then
 
     # Generate a random MAC for each Wi-Fi and associate the two permanently.
     wifi.cloned-mac-address=stable
-    EOF
+EOF
+
 else
     echo "skipping networkmanager config"
 fi
 
-echo "##### END NETWORKMANAGER SECTION #####"
+echo "##### EOF NETWORKMANAGER SECTION #####"
 
 echo "##### START SYSCTL SECTION #####"
 # set sysctl conf dir
@@ -97,7 +98,7 @@ then
 
     # only use swap if needed as it can leak sensitive data
     vm.swappiness=1
-    EOF
+EOF
 else
     echo "skipping kernel hardening"
 fi
@@ -153,7 +154,7 @@ then
     # enable ipv6 privacy extensions on kernel level
     net.ipv6.conf.all.use_tempaddr=2
     net.ipv6.conf.default.use_tempaddr=2
-    EOF
+EOF
 else
     echo "skipping kernel network hardening"
 fi
@@ -186,4 +187,3 @@ then
 else
     echo "skipping changing timezone"
 fi
-
