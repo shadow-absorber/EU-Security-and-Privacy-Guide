@@ -2,6 +2,8 @@
 A checklist of things you can do to improve your devices security and your privacy in the EU!
 
 ## Basic Things
+- [ ] check privacy settings of all social medias you use!!!
+- [ ] use private messengers like [signal](https://signal.org/), for even more privacy check out [session](https://getsession.org/) or [briar](https://briarproject.org/)
 - [ ] change search engine to a more private one. recommended for most is [duckduckgo](https://duckduckgo.com/), [leta](https://leta.mullvad.net/), [brave](https://search.brave.com/), searxng( check instances here [https://searx.space/](https://searx.space/) ).
 - [ ] change browser to firefox( or forks like librewolf ) or if you need chromium! brave or thorium .
 - [ ] use a password manager. recommended for most is [bitwarden](https://bitwarden.com/) for online password manager, and [keepassxc](https://keepassxc.org/) for offline password manager.
@@ -10,16 +12,17 @@ A checklist of things you can do to improve your devices security and your priva
 - [ ] opt out of data brokers using the [delete-links.md](delete-links.md) to opt out of a few not covered by the previous tool
 
 ## Payment required things
-- [ ] get a hardware key for 2fa, recommend yubikey and nitrokey
+- [ ] get a hardware key for 2fa, recommend [yubikey](https://www.yubico.com/) and [nitrokey](https://www.nitrokey.com/). make sure to get at least 2 to have one as backup if you lose the other!!!
 - [ ] get your own domain name for email
-- [ ] setup proton and tuta email accounts
-- [ ] vpn, recommend mullvad and ivpn
+- [ ] setup [proton](https://proton.me/) and [tuta](https://tuta.com/) email accounts
+- [ ] vpn, recommend [mullvad](mullvad.net/en/) and [ivpn](https://www.ivpn.net/en/)
 - [ ] rfid/faraday wallet
 - [ ] faraday bag for phone and laptop
 - [ ] google pixel with [grapheneos](https://grapheneos.org/)
 - [ ] alternative degoogled android phones: [Comparison of Android-based Operating Systems](https://eylenburg.github.io/android_comparison.htm/)
 - [ ] use [icogni](https://incogni.com/) for databroker removal as it is the main option that works in the EU
 
+## unsorted to be sorted
 - [ ] full disk encryption
 - [ ] opensnitch
 - [ ] bleachbit
