@@ -3,6 +3,7 @@ A checklist of things you can do to improve your devices security and your priva
 
 ## Basic Things
 - [ ] check privacy settings of all social medias you use!!!
+- [ ] consider digital minimalism! i.e using as few digital services and accounts as possible. as data not collected can't be exploited or hacked!
 - [ ] use private messengers like [signal](https://signal.org/), for even more privacy check out [session](https://getsession.org/) or [briar](https://briarproject.org/)
 - [ ] change search engine to a more private one. recommended for most is [duckduckgo](https://duckduckgo.com/), [leta](https://leta.mullvad.net/), [brave](https://search.brave.com/), searxng( check instances here [https://searx.space/](https://searx.space/) ).
 - [ ] change browser to firefox( or forks like librewolf ) or if you need chromium! brave or thorium .
