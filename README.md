@@ -4,11 +4,14 @@ A checklist of things you can do to improve your devices security and your priva
 ## Basic Things
 - [ ] check privacy settings of all social medias you use!!!
 - [ ] consider digital minimalism! i.e using as few digital services and accounts as possible. as data not collected can't be exploited or hacked!
+- [ ] avoid internet of things devices( devices that connect to the internet when not needed ) as those can break your home networks security and breach your privacy!
 - [ ] use private messengers like [signal](https://signal.org/), for even more privacy check out [session](https://getsession.org/) or [briar](https://briarproject.org/)
 - [ ] change search engine to a more private one. recommended for most is [duckduckgo](https://duckduckgo.com/), [leta](https://leta.mullvad.net/), [brave](https://search.brave.com/), searxng( check instances here [https://searx.space/](https://searx.space/) ).
 - [ ] change browser to firefox( or forks like librewolf ) or if you need chromium! brave or thorium .
 - [ ] use a password manager. recommended for most is [bitwarden](https://bitwarden.com/) for online password manager, and [keepassxc](https://keepassxc.org/) for offline password manager.
 - [ ] setup authenticator app for 2fa on all sites that support it.
+
+- [ ] generate random answers to security questions on sites that use those. DON'T use real answers as those can easily be guessed or figured out by threats!!!
 - [ ] use [visiblelabs](https://remover.visiblelabs.org/) data broker removal tool as it is free and gets you removed from a lot of databrokers including ones based in the eu
 - [ ] opt out of data brokers using the [delete-links.md](delete-links.md) to opt out of a few not covered by the previous tool
 
