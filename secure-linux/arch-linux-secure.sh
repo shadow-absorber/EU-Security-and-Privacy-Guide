@@ -161,6 +161,87 @@ fi
 
 echo "##### EN SYSCTL SECTION #####"
 
+read -r -p "sandbox systemd services? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
+then
+echo "for details of what options look like check /etc/systemd/system/NetworkManager.service.d folder"
+cat > "/etc/systemd/system/NetworkManager.service.d/hardening.conf" << 'EOF'
+[Service]
+##############
+# Networking #
+##############
+
+# PrivateNetwork= service needs access to host network
+RestrictAddressFamilies=AF_INET AF_INET6 AF_NETLINK AF_PACKET AF_UNIX
+# IPAccounting=yes
+# IPAddressAllow=any
+# IPAddressDeny= service needs access to all IPs
+
+###############
+# File system #
+###############
+#  Note that the effect of these settings may be undone by privileged processes. In order to
+#  set up an effective sandboxed environment for a unit it is thus recommended to combine
+#  these settings with either CapabilityBoundingSet=~CAP_SYS_ADMIN or
+#  SystemCallFilter=~@mount.
+
+ProtectHome=yes
+ProtectSystem=strict
+ProtectProc=invisible
+ReadWritePaths=/etc -/proc/sys/net -/var/lib/NetworkManager/
+PrivateTmp=yes
+
+###################
+# User separation #
+###################
+
+# PrivateUsers= service runs as root
+# DynamicUser= service runs as root
+
+###########
+# Devices #
+###########
+
+PrivateDevices=yes
+# DeviceAllow=/dev/exampledevice
+
+##########
+# Kernel #
+##########
+
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+
+########
+# Misc #
+########
+
+CapabilityBoundingSet=~CAP_SYS_ADMIN CAP_SETUID CAP_SETGID CAP_SYS_CHROOT
+# AmbientCapabilities= service runs as root
+NoNewPrivileges=yes
+ProtectHostname=yes
+ProtectClock=yes
+ProtectControlGroups=yes
+RestrictNamespaces=yes
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+# RemoveIPC= service runs as root
+
+################
+# System calls #
+################
+
+SystemCallFilter=@system-service @privileged
+# SystemCallFilter= service needs all calls in @system-service
+SystemCallArchitectures=native
+EOF
+else
+echo "skipping systemd service sandboxing"
+fi
+
 read -r -p "change machine id? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
 then
