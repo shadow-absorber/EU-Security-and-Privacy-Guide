@@ -165,6 +165,7 @@ read -r -p "sandbox systemd services? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
 then
 echo "for details of what options look like check /etc/systemd/system/NetworkManager.service.d folder"
+mkdir -p /etc/systemd/system/NetworkManager.service.d/
 cat > "/etc/systemd/system/NetworkManager.service.d/hardening.conf" << 'EOF'
 [Service]
 ##############
