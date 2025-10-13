@@ -23,7 +23,7 @@ A checklist of things you can do to improve your devices security and your priva
 - [ ] rfid/faraday wallet
 - [ ] faraday bag for phone and laptop
 - [ ] google pixel with [grapheneos](https://grapheneos.org/)
-- [ ] alternative degoogled android phones: [Comparison of Android-based Operating Systems](https://eylenburg.github.io/android_comparison.htm/)
+- [ ] alternative degoogled android phones: [Comparison of Android-based Operating Systems](https://eylenburg.github.io/android_comparison.htm)
 - [ ] use [icogni](https://incogni.com/) for databroker removal as it is the main option that works in the EU
 
 ## unsorted to be sorted
