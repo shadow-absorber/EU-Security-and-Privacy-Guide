@@ -1,5 +1,59 @@
 #!/usr/bin/env bash
 
+# Function to display usage information
+function show_help() {
+    echo "Usage: ${0##*/} [OPTIONS]"
+    echo "A script to make arch linux more secure and privacy respecting"
+    echo
+    echo "Options:"
+    echo "  -h, --help        Show this help message and exit."
+    echo "  -r, --revert      revert changes from running script normally"
+    echo "no options:         run hardening script"
+    echo
+    echo "Ensure you run this script as root."
+}
+
+function revert() {
+   if [ "$EUID" -ne 0 ]; then
+    echo "MUST RUN AS ROOT"
+    exit 1
+   fi
+   echo "removing networkmanager config"
+   #rm /etc/NetworkManager/conf.d/10-ip6-privacy.conf
+   #rm /etc/NetworkManager/conf.d/11-connectivity-check-disable.conf
+   #rm /etc/NetworkManager/conf.d/12-dhcp-send-hostname-disable.conf
+   #rm /etc/NetworkManager/conf.d/13-wifi-rand-mac.conf
+
+   echo "removing sysctl config"
+   #rm /etc/sysctl.d/10-kernel-hardening.conf
+   #rm /etc/sysctl.d/20-network-hardening.conf
+
+   echo "remove systemd service sandboxing"
+   #rm /etc/systemd/system/NetworkManager.service.d/hardening.conf
+
+   echo "setting machine id to random number"
+   echo $(date +%s | md5sum | awk '{ print $1 }')
+
+   echo "set your machine hostname with:"
+   echo "hostnamectl hostname whatYouWantToCallYourComputer"
+
+   echo "set your time zone with:"
+   echo "timedatectl set-timezone continent/city"
+   echo "for list of timezones run:"
+   echo "timedatectl list-timezones"
+
+   echo "to finalize the changes reboot"
+}
+# Check for help option
+while [[ "$#" -gt 0 ]]; do
+	case "$1" in
+		-h|--help) show_help; exit 0 ;;
+		-r|--revert) revert; exit 0 ;;
+		*) echo "Unknown option: $1"; show_help; exit 1 ;;
+	esac
+		shift
+done
+
 if [ "$EUID" -ne 0 ]
 then
 echo "MUST RUN AS ROOT"
@@ -99,6 +153,9 @@ kernel.perf_event_paranoid=3
 # only use swap if needed as it can leak sensitive data
 vm.swappiness=1
 EOF
+echo "check these settings if you have breakage"
+echo "disable namespaces as it can break systemd services running in --user mode"
+echo "vm.swappiness as it can make your machine worse of or starved of ram"
 else
 echo "skipping kernel hardening"
 fi
@@ -155,6 +212,9 @@ net.ipv4.tcp_timestamps=0
 net.ipv6.conf.all.use_tempaddr=2
 net.ipv6.conf.default.use_tempaddr=2
 EOF
+echo "check these options if you have breakage"
+echo "the disabling of ipv6 router advertisements can cause issues if your network uses ipv6"
+echo "the protect against smurf attacks can be turned off if you need to be able to ping this machine"
 else
 echo "skipping kernel network hardening"
 fi
@@ -269,3 +329,5 @@ timedatectl set-timezone UTC
 else
 echo "skipping changing timezone"
 fi
+
+echo "to finalize the changes reboot"
