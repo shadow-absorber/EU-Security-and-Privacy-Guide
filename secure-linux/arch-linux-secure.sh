@@ -19,29 +19,32 @@ function revert() {
     exit 1
    fi
    echo "removing networkmanager config"
-   #rm /etc/NetworkManager/conf.d/10-ip6-privacy.conf
-   #rm /etc/NetworkManager/conf.d/11-connectivity-check-disable.conf
-   #rm /etc/NetworkManager/conf.d/12-dhcp-send-hostname-disable.conf
-   #rm /etc/NetworkManager/conf.d/13-wifi-rand-mac.conf
-
+   rm /etc/NetworkManager/conf.d/10-ip6-privacy.conf
+   rm /etc/NetworkManager/conf.d/11-connectivity-check-disable.conf
+   rm /etc/NetworkManager/conf.d/12-dhcp-send-hostname-disable.conf
+   rm /etc/NetworkManager/conf.d/13-wifi-rand-mac.conf
+   echo
    echo "removing sysctl config"
-   #rm /etc/sysctl.d/10-kernel-hardening.conf
-   #rm /etc/sysctl.d/20-network-hardening.conf
-
+   rm /etc/sysctl.d/10-kernel-hardening.conf
+   rm /etc/sysctl.d/20-network-hardening.conf
+   echo
    echo "remove systemd service sandboxing"
-   #rm /etc/systemd/system/NetworkManager.service.d/hardening.conf
-
+   rm /etc/systemd/system/NetworkManager.service.d/hardening.conf
+   echo
    echo "setting machine id to random number"
    echo $(date +%s | md5sum | awk '{ print $1 }')
-
+   echo
    echo "set your machine hostname with:"
    echo "hostnamectl hostname whatYouWantToCallYourComputer"
-
+   echo
    echo "set your time zone with:"
    echo "timedatectl set-timezone continent/city"
    echo "for list of timezones run:"
    echo "timedatectl list-timezones"
-
+   echo
+   echo "reflash bios to get old secure boot keys back"
+   echo "or disable secure boot"
+   echo
    echo "to finalize the changes reboot"
 }
 # Check for help option
@@ -328,6 +331,29 @@ echo "setting timezone to UTC"
 timedatectl set-timezone UTC
 else
 echo "skipping changing timezone"
+fi
+
+echo "WARNING this can't be undone!!!"
+read -r -p "enable secure boot? [y/N] "
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
+then
+echo "remove old secure boot keys"
+echo "enter secure boto setup mode"
+echo "check online for how to do this for your laptop"
+echo "or for your motherboard"
+echo "use the following command to reboot into bios/uefi"
+echo "systemctl reboot --firmware-setup"
+echo "run the following commands as root"
+echo "sbctl status"
+echo "sbctl create-keys"
+echo "sbctl enroll-keys -m"
+echo "sbctl verify"
+echo "sbctl verify | sed -E 's|^.* (/.+) is not signed$|sbctl sign -s \"\1\"|e'"
+echo "sbctl sign -s -o /usr/lib/systemd/boot/efi/systemd-bootx64.efi.signed /usr/lib/systemd/boot/efi/systemd-bootx64.efi"
+echo 
+echo "now reboot and enable secure boot in bios/uefi"
+else
+echo "skipping explaining secure boot"
 fi
 
 echo "to finalize the changes reboot"
