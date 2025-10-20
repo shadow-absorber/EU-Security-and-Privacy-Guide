@@ -9,6 +9,8 @@ A checklist of things you can do to improve your devices security and your priva
 - [ ] change search engine to a more private one. recommended for most is [duckduckgo](https://duckduckgo.com/), [leta](https://leta.mullvad.net/), [brave](https://search.brave.com/), searxng( check instances here [https://searx.space/](https://searx.space/) ).
 - [ ] change browser to firefox( or forks like librewolf ) or if you need chromium! brave or thorium .
 - [ ] use a password manager. recommended for most is [bitwarden](https://bitwarden.com/) for online password manager, and [keepassxc](https://keepassxc.org/) for offline password manager.
+- [ ] stop reusing passwords.
+- [ ] check your email address on [haveibeenpwned](https://haveibeenpwned.com) and change passwords for services where your email has been leaked!!!
 - [ ] setup authenticator app for 2fa on all sites that support it.
 
 - [ ] generate random answers to security questions on sites that use those. DON'T use real answers as those can easily be guessed or figured out by threats!!!
