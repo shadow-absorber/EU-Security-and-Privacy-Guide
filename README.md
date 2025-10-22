@@ -16,6 +16,7 @@ A checklist of things you can do to improve your devices security and your priva
 - [ ] generate random answers to security questions on sites that use those. DON'T use real answers as those can easily be guessed or figured out by threats!!!
 - [ ] use [visiblelabs](https://remover.visiblelabs.org/) data broker removal tool as it is free and gets you removed from a lot of databrokers including ones based in the eu
 - [ ] opt out of data brokers using the [delete-links.md](delete-links.md) to opt out of a few not covered by the previous tool
+- [ ] use [sherlock](https://github.com/sherlock-project/sherlock) to search your account name/names and delete any accounts you no longer use. check [justdeleteme.xyz](https://justdeleteme.xyz/#) for guides on how to delete most accounts
 
 ## Payment required things
 - [ ] get a hardware key for 2fa, recommend [yubikey](https://www.yubico.com/) and [nitrokey](https://www.nitrokey.com/). make sure to get at least 2 to have one as backup if you lose the other!!!
