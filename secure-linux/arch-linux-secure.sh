@@ -334,7 +334,7 @@ echo "skipping changing timezone"
 fi
 
 echo "WARNING this can't be undone!!!"
-read -r -p "enable secure boot? [y/N] "
+read -r -p "enable secure boot? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
 then
 echo "remove old secure boot keys"
@@ -355,5 +355,5 @@ echo "now reboot and enable secure boot in bios/uefi"
 else
 echo "skipping explaining secure boot"
 fi
-
+echo
 echo "to finalize the changes reboot"
