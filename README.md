@@ -22,7 +22,7 @@ A checklist of things you can do to improve your devices security and your priva
 - [ ] get a hardware key for 2fa, recommend [yubikey](https://www.yubico.com/) and [nitrokey](https://www.nitrokey.com/). make sure to get at least 2 to have one as backup if you lose the other!!!
 - [ ] get your own domain name for email
 - [ ] setup [proton](https://proton.me/) and [tuta](https://tuta.com/) email accounts
-- [ ] vpn, recommend [mullvad](mullvad.net/en/) and [ivpn](https://www.ivpn.net/en/)
+- [ ] vpn, recommend [mullvad](https://mullvad.net/en/) and [ivpn](https://www.ivpn.net/en/)
 - [ ] rfid/faraday wallet
 - [ ] faraday bag for phone and laptop
 - [ ] google pixel with [grapheneos](https://grapheneos.org/)
