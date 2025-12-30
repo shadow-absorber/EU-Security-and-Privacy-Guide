@@ -32,7 +32,7 @@ function revert() {
    rm /etc/systemd/system/NetworkManager.service.d/hardening.conf
    echo
    echo "setting machine id to random number"
-   echo $(date +%s | md5sum | awk '{ print $1 }')
+   echo $(date +%s | md5sum | awk '{ print $1 }') > /etc/machine-id
    echo
    echo "set your machine hostname with:"
    echo "hostnamectl hostname whatYouWantToCallYourComputer"
@@ -71,20 +71,20 @@ read -r -p "apply networkmanager config? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
 then  
 echo "enable privacy extensions for ipv6 in networkmanager"
-echo " $(<./NetworkManager/10-ip6-privacy.conf)"
-echo " $(<./NetworkManager/10-ip6-privacy.conf)" > "$NetworkManagerConf/10-ip6-privacy.conf"
+echo "$(<./NetworkManager/10-ip6-privacy.conf)"
+echo "$(<./NetworkManager/10-ip6-privacy.conf)" > "$NetworkManagerConf/10-ip6-privacy.conf"
 
 echo "disable connectivity check in networkmanager"
-echo " $(<./NetworkManager/11-connectivity-check-disable.conf)"
-echo " $(<./NetworkManager/11-connectivity-check-disable.conf)" > "$NetworkManagerConf/11-connectivity-check-disable.conf"
+echo "$(<./NetworkManager/11-connectivity-check-disable.conf)"
+echo "$(<./NetworkManager/11-connectivity-check-disable.conf)" > "$NetworkManagerConf/11-connectivity-check-disable.conf"
 
 echo "disable sending hostname in networkmanager"
-echo " $(<./NetworkManager/12-dhcp-send-hostname-disable.conf)"
-echo " $(<./NetworkManager/12-dhcp-send-hostname-disable.conf)" > "$NetworkManagerConf/12-dhcp-send-hostname-disable.conf"
+echo "$(<./NetworkManager/12-dhcp-send-hostname-disable.conf)"
+echo "$(<./NetworkManager/12-dhcp-send-hostname-disable.conf)" > "$NetworkManagerConf/12-dhcp-send-hostname-disable.conf"
 
 echo "enable mac address randomization for scanning and connecting using networkmanager"
-echo " $(<./NetworkManager/13-wifi-rand-mac.conf)"
-echo " $(<./NetworkManager/13-wifi-rand-mac.conf)" > "$NetworkManagerConf/13-wifi-rand-mac.conf"
+echo "$(<./NetworkManager/13-wifi-rand-mac.conf)"
+echo "$(<./NetworkManager/13-wifi-rand-mac.conf)" > "$NetworkManagerConf/13-wifi-rand-mac.conf"
 
 else
 echo "skipping networkmanager config"
@@ -101,8 +101,8 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
 then
 echo "kernel hardening!"
 echo "for details of what options look like check $SysctlConf/10-kernel-hardening.conf"
-echo " $(<./sysctl/10-kernel-hardening.conf)"
-echo " $(<./sysctl/10-kernel-hardening.conf)" > "$SysctlConf/10-kernel-hardening.conf"
+echo "$(<./sysctl/10-kernel-hardening.conf)"
+echo "$(<./sysctl/10-kernel-hardening.conf)" > "$SysctlConf/10-kernel-hardening.conf"
 
 echo "check these settings if you have breakage"
 echo "disable namespaces as it can break systemd services running in --user mode"
@@ -134,79 +134,9 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
 then
 echo "for details of what options look like check /etc/systemd/system/NetworkManager.service.d folder"
 mkdir -p /etc/systemd/system/NetworkManager.service.d/
-cat > "/etc/systemd/system/NetworkManager.service.d/hardening.conf" << 'EOF'
-[Service]
-##############
-# Networking #
-##############
+echo "$(<./systemd/NetworkManager.conf)"
+echo "$(<./systemd/NetworkManager.conf)" > "/etc/systemd/system/NetworkManager.service.d/hardening.conf"
 
-# PrivateNetwork= service needs access to host network
-RestrictAddressFamilies=AF_INET AF_INET6 AF_NETLINK AF_PACKET AF_UNIX
-# IPAccounting=yes
-# IPAddressAllow=any
-# IPAddressDeny= service needs access to all IPs
-
-###############
-# File system #
-###############
-#  Note that the effect of these settings may be undone by privileged processes. In order to
-#  set up an effective sandboxed environment for a unit it is thus recommended to combine
-#  these settings with either CapabilityBoundingSet=~CAP_SYS_ADMIN or
-#  SystemCallFilter=~@mount.
-
-ProtectHome=yes
-ProtectSystem=strict
-ProtectProc=invisible
-ReadWritePaths=/etc -/proc/sys/net -/var/lib/NetworkManager/
-PrivateTmp=yes
-
-###################
-# User separation #
-###################
-
-# PrivateUsers= service runs as root
-# DynamicUser= service runs as root
-
-###########
-# Devices #
-###########
-
-PrivateDevices=yes
-# DeviceAllow=/dev/exampledevice
-
-##########
-# Kernel #
-##########
-
-ProtectKernelTunables=yes
-ProtectKernelModules=yes
-ProtectKernelLogs=yes
-
-########
-# Misc #
-########
-
-CapabilityBoundingSet=~CAP_SYS_ADMIN CAP_SETUID CAP_SETGID CAP_SYS_CHROOT
-# AmbientCapabilities= service runs as root
-NoNewPrivileges=yes
-ProtectHostname=yes
-ProtectClock=yes
-ProtectControlGroups=yes
-RestrictNamespaces=yes
-LockPersonality=yes
-MemoryDenyWriteExecute=yes
-RestrictRealtime=yes
-RestrictSUIDSGID=yes
-# RemoveIPC= service runs as root
-
-################
-# System calls #
-################
-
-SystemCallFilter=@system-service @privileged
-# SystemCallFilter= service needs all calls in @system-service
-SystemCallArchitectures=native
-EOF
 else
 echo "skipping systemd service sandboxing"
 fi
