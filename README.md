@@ -48,7 +48,7 @@ A checklist of things you can do to improve your devices security and your priva
 - [ ] enable a firewall
 
 # Credits and recommended reading:
-[https://madaidans-insecurities.github.io/index.html](https://madaidans-insecurities.github.io/index.html/)
+[https://madaidans-insecurities.github.io/index.html](https://madaidans-insecurities.github.io/index.html)
 
 [kuketz blog](https://www.kuketz-blog.de/) on privacy and security steps in german
 
