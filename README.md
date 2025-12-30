@@ -27,7 +27,7 @@ A checklist of things you can do to improve your devices security and your priva
 - [ ] faraday bag for phone and laptop
 - [ ] google pixel with [grapheneos](https://grapheneos.org/)
 - [ ] alternative degoogled android phones: [Comparison of Android-based Operating Systems](https://eylenburg.github.io/android_comparison.htm)
-- [ ] use [incogni](https://incogni.com/) for databroker removal as it is the main option that works in the EU
+- [ ] use [incogni](https://incogni.com/) for data broker removal as it is the main option that works in the EU
 
 ## unsorted to be sorted
 - [ ] full disk encryption
@@ -85,7 +85,7 @@ LTC/Litecoin:
 ltc1q9wcj0k9s809dn6n4h6t0zkx8tgujnv3esl54wd
 ```
 
-XMR/Monero **PREFERED METHOD** :
+XMR/Monero **PREFERRED METHOD** :
 ```
 858jbEYvqU1VeszNgNGWvuBWX2WW4LbvA1eZJjH46duUFu7PZ5SGi4rbdJsddU5emVM6TsKzkZ1Sp5mvFt57j78NHEnqkmV
 ```
