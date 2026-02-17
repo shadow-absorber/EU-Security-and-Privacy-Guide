@@ -1,7 +1,7 @@
 # EU-Security-and-Privacy-Guide
 A checklist of things you can do to improve your devices security and your privacy in the EU!
 
-## Basic Things
+### Basic Things
 - [ ] check privacy settings of all social medias you use!!!
 - [ ] consider digital minimalism! i.e using as few digital services and accounts as possible. as data not collected can't be exploited or hacked!
 - [ ] avoid internet of things devices( devices that connect to the internet when not needed ) as those can break your home networks security and breach your privacy!
@@ -18,7 +18,7 @@ A checklist of things you can do to improve your devices security and your priva
 - [ ] opt out of data brokers using the [delete-links.md](delete-links.md) to opt out of a few not covered by the previous tool
 - [ ] use [sherlock](https://github.com/sherlock-project/sherlock) to search your account name/names and delete any accounts you no longer use. check [justdeleteme.xyz](https://justdeleteme.xyz/#) for guides on how to delete most accounts
 
-## Payment required things
+### Payment required things
 - [ ] get a hardware key for 2fa, recommend [yubikey](https://www.yubico.com/) and [nitrokey](https://www.nitrokey.com/). make sure to get at least 2 to have one as backup if you lose the other!!!
 - [ ] get your own domain name for email
 - [ ] setup [proton](https://proton.me/) and [tuta](https://tuta.com/) email accounts
@@ -27,9 +27,10 @@ A checklist of things you can do to improve your devices security and your priva
 - [ ] faraday bag for phone and laptop
 - [ ] google pixel with [grapheneos](https://grapheneos.org/)
 - [ ] alternative degoogled android phones: [Comparison of Android-based Operating Systems](https://eylenburg.github.io/android_comparison.htm)
+- [ ] if there are no custom roms for your android phone follow this: [How To De-Google Any Android Phone](https://www.youtube.com/watch?v=3UOqvQkXr0k)
 - [ ] use [incogni](https://incogni.com/) for data broker removal as it is the main option that works in the EU
 
-## unsorted to be sorted
+### unsorted to be sorted
 - [ ] full disk encryption
 - [ ] opensnitch
 - [ ] bleachbit
@@ -41,13 +42,13 @@ A checklist of things you can do to improve your devices security and your priva
 
 - [ ] voicemail pin
 
-## Security
+### Security
 - [ ] install linux
 - [ ] enable secure boot
 - [ ] set sysctl kernel hardening values
 - [ ] enable a firewall
 
-# Credits and recommended reading:
+## Credits and recommended reading:
 [https://madaidans-insecurities.github.io/index.html](https://madaidans-insecurities.github.io/index.html)
 
 [kuketz blog](https://www.kuketz-blog.de/) on privacy and security steps in german
@@ -62,8 +63,9 @@ A checklist of things you can do to improve your devices security and your priva
 
 [privacy visualizer](https://rejectconvenience.com/privacy-visualizer/), a visualiser for help understanding privacy policies you read, made by [reject convience](https://www.youtube.com/@rejectconvenience)  on youtube
 
+[Secure boot on arch with nvidia gpu](https://github.com/heeeyaaaa/Complete-guide-for-secure-boot-on-Arch-Linux-with-rEFInd)
 
-# Crypto Donations:
+## Crypto Donations:
 
 BTC/Bitcoin:
 ```
